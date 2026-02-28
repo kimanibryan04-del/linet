@@ -2,80 +2,112 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device=width, initial-scale=1.0">
     <title>To Linet ❤️</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="linet%20favicon.png">
     <style>
-        body, html { height: 100%; margin: 0; font-family: 'Poppins', sans-serif; overflow: hidden; }
+    /* Prevent horizontal scrolling and handle height better on mobile */
+    body, html {
+        min-height: 100%;
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        overflow-x: hidden; /* Only hide horizontal */
+    }
 
-        /* New Romantic Background */
-        .bg-love {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: linear-gradient(135deg, #ffafbd 0%, #ffc3a0 100%);
-            overflow: hidden;
-        }
+    .bg-love {
+        position: fixed; /* Fixed so it stays while scrolling if needed */
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: linear-gradient(135deg, #ffafbd 0%, #ffc3a0 100%);
+    }
 
-        /* Animated Floating Hearts */
-        .heart {
-            position: absolute;
-            bottom: -100px;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 20px;
-            user-select: none;
-            animation: float 10s linear infinite;
-        }
+    .heart {
+        position: absolute;
+        bottom: -100px;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 20px;
+        user-select: none;
+        animation: float 10s linear infinite;
+    }
 
-        @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
-        }
+    @keyframes float {
+        0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+    }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            border-radius: 2.5rem;
-            color: white;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            max-width: 650px;
-            z-index: 10;
-        }
+    .glass-card {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 2rem;
+        color: white;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        width: 90%; /* Take up 90% of screen width on mobile */
+        max-width: 500px; /* But don't get too big on desktop */
+        padding: 2rem !important; /* Slightly less padding for more room */
+        z-index: 10;
+        margin: 20px auto;
+    }
 
-        .poem-text {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.2rem;
-            color: #fff;
-            text-shadow: 2px 2px 5px rgba(255, 77, 109, 0.3);
-        }
+    /* TEXT SCALING FOR MOBILE */
+    .poem-text {
+        font-family: 'Dancing Script', cursive;
+        font-size: 1.6rem; /* Smaller for phones */
+        color: #fff;
+        text-shadow: 2px 2px 5px rgba(255, 77, 109, 0.3);
+        line-height: 1.4;
+    }
 
-        .btn-love {
-            background: #ff4d6d;
-            border: none;
-            color: white;
-            transition: all 0.3s ease;
-        }
+    h2 { font-size: 1.5rem !important; }
+    h1 { font-size: 2rem !important; }
 
-        .btn-love:hover {
-            background: #ff758f;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 77, 109, 0.4);
-        }
+    /* Desktop Adjustments */
+    @media (min-width: 768px) {
+        .poem-text { font-size: 2.2rem; }
+        h2 { font-size: 2.5rem !important; }
+        h1 { font-size: 3rem !important; }
+        .glass-card { padding: 3rem !important; }
+    }
 
-        #videoPlayer {
-            width: 100%;
-            max-width: 400px;
-            border-radius: 20px;
-            margin-top: 20px;
-            border: 3px solid white;
-        }
+    .btn-love {
+        background-color: #ff4d6d !important; /* Forces the red/pink color */
+        border: none !important;
+        color: white !important;
+        padding: 12px 30px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);
+    }
 
-        .hidden { display: none !important; }
-    </style>
+    .btn-love:hover {
+        background-color: #ff758f !important;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(255, 77, 109, 0.4);
+        color: white !important;
+    }
+
+    /* Ensuring the Yes buttons are also vibrant */
+    .btn-success {
+        background-color: #28a745 !important;
+        border: none !important;
+        box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+    }
+
+    #videoPlayer {
+        width: 100%;
+        max-height: 300px; /* Keep it from eating the whole screen */
+        border-radius: 15px;
+        margin-top: 15px;
+        border: 2px solid white;
+    }
+
+    .hidden { display: none !important; }
+</style>
+
 </head>
 <body>
     <audio id="bgMusic" src="Ed_Sheeran_-_Perfect(128k).mp3"></audio>
